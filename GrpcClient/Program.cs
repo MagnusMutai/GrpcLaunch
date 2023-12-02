@@ -17,6 +17,11 @@ namespace GrpcClient
 
             //Console.WriteLine(reply.Message);
 
+            var channel = GrpcChannel.ForAddress("https://localhost:7098");
+            var customerClient = new Customer.CustomerClient(channel);
+
+            var reply = await customerClient.GetCustomerInfoAsync();
+
             Console.ReadLine();
         }
     }
